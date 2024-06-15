@@ -1,0 +1,30 @@
+<div class="home-container">
+  <button (click)="setVisible()">
+    {{ visible ? "Ocultar" : "Mostrar" }} usuarios
+  </button>
+
+  <!-- ANGULAR 17+ -->
+  @if (visible) {
+  <h1>{{ title }}</h1>
+  <div>Total contador del hijo {{ counter }}</div>
+  <div>
+    @for (user of users; track $index) {
+    <p>{{ $index + 1 }}. {{ user }}</p>
+    }
+  </div>
+  }@else {
+  <p>La pagina no esta disponible</p>
+  }
+
+  <!-- ANGULAR 16 PARA ATRAS
+  <h1>{{title}}</h1>
+  <div>
+    <p *ngIf="visible">{{users}}</p>
+  </div> -->
+
+  <!-- pasar datos del padre al hijo -->
+  <app-counter
+    [title]="subTitle"
+    (countEmmit)="setCounter($event)"
+  ></app-counter>
+</div>
