@@ -6,6 +6,7 @@ export const invoiceData: Invoice = {
   amount: 1000,
   date: '2020-01-01',
   paid: false,
+  total: 0,
   client: {
     //   id: number;
     // name!: string;

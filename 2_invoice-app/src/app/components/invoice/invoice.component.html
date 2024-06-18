@@ -1,22 +1,20 @@
+<invoice-view
+  [id]="invoice.id"
+  [name]="invoice.name"
+  [amount]="invoice.amount"
+  [date]="invoice.date"
+  [paid]="invoice.paid"
+></invoice-view>
+
 <table class="invoice-table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Date</th>
-      <th>Paid</th>
       <th>Client</th>
       <th>Company</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>{{ invoice.id }}</td>
-      <td>{{ invoice.name }}</td>
-      <td>{{ invoice.amount }}</td>
-      <td>{{ invoice.date }}</td>
-      <td>{{ invoice.paid ? "Yes" : "No" }}</td>
       <td>{{ invoice.client.name }}</td>
       <td>
         <div>{{ invoice.company.name }}</div>
@@ -25,6 +23,14 @@
     </tr>
   </tbody>
 </table>
+
+<client-view
+  [id]="invoice.client.id"
+  [name]="invoice.client.name"
+  [address]="invoice.client.address"
+  [phone]="invoice.client.phone"
+  [email]="invoice.client.email"
+></client-view>
 
 <div class="items-section">
   <h3>Items</h3>
@@ -35,15 +41,22 @@
         <th>Product</th>
         <th>Price</th>
         <th>Quantity</th>
+        <th>Options</th>
       </tr>
     </thead>
+    <!-- src/app/components/invoice/invoice.component.html -->
     <tbody>
       <tr *ngFor="let item of invoice.items">
         <td>{{ item.id }}</td>
         <td>{{ item.product }}</td>
         <td>{{ item.price }}</td>
         <td>{{ item.quantity }}</td>
+        <td>
+          <button (click)="editItem(item.id)">Editar</button>
+          <button (click)="deleteItem(item.id)">Borrar</button>
+        </td>
       </tr>
     </tbody>
   </table>
+  <total [total]="invoice.total" />
 </div>
