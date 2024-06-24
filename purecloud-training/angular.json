@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "3_cart-app": {
+    "purecloud-training": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
               "path": "./custom-webpack.config.js",
               "mergeStrategies": { "resolve.mainFields": "prepend" }
             },
-            "outputPath": "dist/3_cart-app",
+            "outputPath": "dist/purecloud-training",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -61,10 +61,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "3_cart-app:build:production"
+              "buildTarget": "purecloud-training:build:production"
             },
             "development": {
-              "buildTarget": "3_cart-app:build:development"
+              "buildTarget": "purecloud-training:build:development"
             }
           },
           "defaultConfiguration": "development"
